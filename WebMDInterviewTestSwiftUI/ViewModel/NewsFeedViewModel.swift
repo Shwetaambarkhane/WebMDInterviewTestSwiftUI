@@ -10,7 +10,7 @@ import Dispatch
 
 class NewsFeedViewModel: ObservableObject {
     @Published var articles: [NewsArticle] = []
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: IdentifiableString? = nil
 
     // Function to load news feed
     func loadNewsFeed() {
@@ -24,10 +24,14 @@ class NewsFeedViewModel: ObservableObject {
                 case .success(let articles):
                     self.articles = Array(articles.prefix(25))
                 case .failure(let error):
-                    self.errorMessage = error.localizedDescription
+                    self.errorMessage = IdentifiableString(value: error.localizedDescription)
                 }
             }
         }
     }
 }
 
+struct IdentifiableString: Identifiable {
+    let id = UUID()
+    let value: String
+}

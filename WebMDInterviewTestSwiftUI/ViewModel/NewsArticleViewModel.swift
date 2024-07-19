@@ -9,9 +9,7 @@ import Foundation
 
 struct NewsArticleViewModel {
     
-    func formattedDate(from dateString: String) -> String? {
-        let originalDateString = "2024-07-17T16:12:41Z"
-        
+    static func formattedDate(from originalDateString: String) -> String? {
         // DateFormatter to parse the original date string
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

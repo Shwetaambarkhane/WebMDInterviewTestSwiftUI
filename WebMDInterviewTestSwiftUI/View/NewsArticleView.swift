@@ -42,7 +42,7 @@ struct NewsArticleView: View {
                 Text("Source: \(article.source.name)")
                     .font(.body)
                     .padding()
-                if let publishedAt = NewsArticleViewModel().formattedDate(from: article.publishedAt) {
+                if let publishedAt = NewsArticleViewModel.formattedDate(from: article.publishedAt) {
                     Text("Published at: \(publishedAt)")
                         .font(.body)
                         .padding()

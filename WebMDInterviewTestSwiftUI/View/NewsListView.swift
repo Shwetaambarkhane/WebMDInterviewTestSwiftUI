@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewsListView: View {
     @ObservedObject var viewModel: NewsFeedViewModel
+    @State private var isAlertPresented: Bool = true
 
     var body: some View {
         NavigationView {
@@ -26,15 +27,8 @@ struct NewsListView: View {
                 viewModel.loadNewsFeed()
             }
             .alert(item: $viewModel.errorMessage) { errorMessage in
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Error"), message: Text(errorMessage.value), dismissButton: .default(Text("OK")))
             }
         }
-    }
-}
-
-extension String: Identifiable {
-    public typealias ID = Int
-    public var id: Int {
-        return hash
     }
 }
